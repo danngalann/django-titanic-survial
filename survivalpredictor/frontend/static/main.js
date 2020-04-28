@@ -4,7 +4,8 @@ tl.to("#form", { y: "-100vh" })
   .to("#result", { y: "-100vh" }, "=-.5")
   .to("#result-head", { opacity: 1, duration: 0.4 }, "=-1.2")
   .to("#status", { opacity: 1, duration: 1.4, delay: 1 })
-  .to("#result button", { opacity: 1, duration: 0.4 }, "=-.4");
+  .to("#result button", { opacity: 1, duration: 0.4 }, "=-.4")
+  .to("#result .info", { opacity: 1, duration: 0.4 }, "=-.2");
 
 document.addEventListener("DOMContentLoaded", () => {
   // Entry animation
