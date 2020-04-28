@@ -5,4 +5,4 @@ This is the final implementation of my [titanic death classifier](https://github
 * GSAP for animations
 * pipenv to manage a Python virtual enviroment
 * scikit-learn to train and serve an SVC classifier
-* Django to serve the webiste and the API that makes the predictions
+* Django to serve the website and the API that makes the predictions
