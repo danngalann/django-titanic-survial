@@ -6,3 +6,4 @@ This is the final implementation of my [titanic death classifier](https://github
 * pipenv to manage a Python virtual enviroment
 * scikit-learn to train and serve an SVC classifier
 * Django to serve the website and the API that makes the predictions
+* AJAX JS to retrieve the predictions from the API without refreshing the page
