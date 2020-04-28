@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-import pickle, os
+import pickle, os, json
 
 # Returns a prediction for a given data
 @csrf_exempt
@@ -13,7 +13,9 @@ def index(request):
     clf = pickle.load(model)
   
   # Parse request to a Python list
-  data = [request.POST["Pclass"], request.POST["Sex"], request.POST["Age"], request.POST["SibSp"], request.POST["Parch"]]
+  print(request.body)
+  jsonData = json.loads(request.body)
+  data = [jsonData["Pclass"], jsonData["Sex"], jsonData["Age"], jsonData["SibSp"], jsonData["Parch"]]
 
   # Make prediction
   res = {"isAlive": int(clf.predict([data])[0])}
