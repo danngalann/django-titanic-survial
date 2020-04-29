@@ -1,6 +1,6 @@
 // Define submit animation
 const tl = gsap.timeline({ defaults: { duration: 1 }, paused: true });
-tl.to("#form", { y: "-100vh" })
+tl.to("#form", { y: "-150vh" })
   .to("#result", { y: "-100vh" }, "=-.5")
   .to("#result-head", { opacity: 1, duration: 0.4 }, "=-1.2")
   .to("#status", { opacity: 1, duration: 1.4, delay: 1 })
@@ -17,9 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Reverse animation
   document.getElementById("return-btn").addEventListener("click", () => {
-    if (!tl.reversed()) {
-      tl.reverse();
-    }
+    location.reload();
   });
 });
 
@@ -53,7 +51,8 @@ function submitForm(e) {
       statusEl.classList.add(
         this.responseText ? "text-success" : "text-danger"
       );
-      document.getElementById("result").style.display = "inherit";
+      document.getElementById("result").style.display = 'inherit';
+      document.querySelector("body").style.overflow = 'hidden';
       animateResult();
     }
   };
