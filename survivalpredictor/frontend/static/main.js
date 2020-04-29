@@ -44,21 +44,20 @@ function submitForm(e) {
   xhr.setRequestHeader("Content-type", "application/json;charset=UTF-8");
 
   xhr.onload = function () {
-    spinner.style.display= "none";
+    spinner.style.display = "none";
     if (this.status == 200) {
       const statusEl = document.getElementById("status");
-      statusEl.innerText = this.responseText ? "Alive" : "Dead";
-      statusEl.classList.add(
-        this.responseText ? "text-success" : "text-danger"
-      );
-      document.getElementById("result").style.display = 'inherit';
-      document.querySelector("body").style.overflow = 'hidden';
+      const isAlive = JSON.parse(this.responseText)["isAlive"];
+      statusEl.innerText = isAlive ? "Alive" : "Dead";
+      statusEl.classList.add(isAlive ? "text-success" : "text-danger");
+      document.getElementById("result").style.display = "inherit";
+      document.querySelector("body").style.overflow = "hidden";
       animateResult();
     }
   };
 
   xhr.send(JSON.stringify(data));
-  spinner.style.display= "flex";
+  spinner.style.display = "flex";
 }
 
 function animateResult() {
