@@ -26,6 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function submitForm(e) {
   e.preventDefault();
 
+  // Spinner
+  const spinner = document.getElementById("loading-overlay");
+
   // Crate data object
   var data = {
     Pclass: document.getElementById("pclass").value,
@@ -43,19 +46,22 @@ function submitForm(e) {
   xhr.setRequestHeader("Content-type", "application/json;charset=UTF-8");
 
   xhr.onload = function () {
+    spinner.style.display= "none";
     if (this.status == 200) {
       const statusEl = document.getElementById("status");
       statusEl.innerText = this.responseText ? "Alive" : "Dead";
       statusEl.classList.add(
         this.responseText ? "text-success" : "text-danger"
       );
+      document.getElementById("result").style.display = "inherit";
       animateResult();
     }
   };
 
   xhr.send(JSON.stringify(data));
+  spinner.style.display= "flex";
 }
 
 function animateResult() {
-  tl.play();
+  tl.play().timeScale(1);
 }

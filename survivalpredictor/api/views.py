@@ -13,12 +13,11 @@ def index(request):
     clf = pickle.load(model)
   
   # Parse request to a Python list
-  print(request.body)
   jsonData = json.loads(request.body)
   data = [jsonData["Pclass"], jsonData["Sex"], jsonData["Age"], jsonData["SibSp"], jsonData["Parch"]]
 
   # Make prediction
   res = {"isAlive": int(clf.predict([data])[0])}
-  
+
   # Return response
   return JsonResponse(res, safe=False)
