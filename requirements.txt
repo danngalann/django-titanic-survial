@@ -1,7 +1,7 @@
 -i https://pypi.org/simple/
 asgiref==3.2.7
 django==3.0.7
-joblib==0.15.1
+joblib==1.2.0
 numpy==1.18.5
 pytz==2020.1
 scikit-learn==0.21.3
